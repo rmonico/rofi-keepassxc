@@ -191,7 +191,7 @@ if [ "$check_pass" = "$error_pass" ]; then
 elif [ "$check_db" = "$error_db" ]; then
   rofi -e "$error_db"
 else
-  echo "$dbpass" | keepassxc-cli ls "$db" | grep -Ev 'Enter|?*/' | sort >"$CACHE/tmp"
+  echo "$dbpass" | keepassxc-cli ls -fR "$db" | sort > "$CACHE/tmp"
   elements_num=$([ "$(wc -l < "$CACHE/tmp")" -gt 20 ] && echo 20)
 
   entry=$(m -p "Entry list" -l "$elements_num" -width 350 < "$CACHE/tmp")
