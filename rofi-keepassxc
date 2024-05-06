@@ -175,7 +175,7 @@ while [ "$1" ]; do
 done
 
 [ ! "$timeout" ] && timeout=15
-CACHE=$HOME/.cache/rofi-keepassxc/
+CACHE=$HOME/.cache/rofi-keepassxc
 mkdir -p "$CACHE"
 
 dbpass=$(m -p "Enter your database password" -l 0 -password -width 500)
