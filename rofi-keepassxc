@@ -6,7 +6,12 @@ clip_username() {
   echo "$dbpass" | keepassxc-cli show "$db" "$entry" | grep 'UserName:' | \
     cut -b 11- | xclip -sel clip
 }
-clip_password() { echo "$dbpass" | keepassxc-cli clip "$db" "$entry" "$timeout" ;}
+clip_password() {
+    notify-send "rofi-keepassxc" "Password copied to clipboard"
+    echo "$dbpass" | keepassxc-cli clip "$db" "$entry" "$timeout"
+    notify-send "rofi-keepassxc" "Password removed from clipboard"
+}
+
 clip_title() { echo "$element" | cut -b 8- | xclip -sel clip ;}
 clip_url() { echo "$element" | cut -b 6- | xclip -sel clip ;}
 clip_notes() { echo "$element" | cut -b 8- | xclip -sel clip ;}
